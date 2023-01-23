@@ -29,9 +29,14 @@ function app(people) {
             searchResults = searchByName(people);
             break;
         case "no":
+            let searchByTraits = promptFor("Please type in search criteria without spaces then value. 'Separate multiple cruiteria by a semicolon (no spaces around semicolon). Can also select 'restart' or 'quit'. (example one criteria - eyecolo brown) (example multiple criteria - eyecolor brown; gender female)",).toLowerCase(); 
+            searchByTraits = data.filter(function(dataset){
+
+            })
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
                 //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
             searchResults = searchByTraits(people);
+            console.log(searchResults)
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -140,6 +145,14 @@ function displayPeople(people) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `gender: ${person.gender}\n`;
+    personInfo += `dob: ${person.dob}\n`;
+    personInfo += `height: ${person.height}\n`;
+    personInfo += `weight: ${person.weight}\n`;
+    personInfo +=  `Eye Color: ${person.eyeColor}\n`;
+    personInfo +=  `occupation: ${person.occupation}\n`;
+    personInfo += `parents: ${person.parents}\n`;
+    personInfo += `Current Spouse: ${person.currentSpouse}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
 }
