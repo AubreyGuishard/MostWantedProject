@@ -153,10 +153,17 @@ function displayPerson(person) {
     personInfo +=  `occupation: ${person.occupation}\n`;
     personInfo += `parents: ${person.parents}\n`;
     personInfo += `Current Spouse: ${person.currentSpouse}\n`;
-    //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
+    //! TODO #1a: finish getting the rest of the information to display //////////FINISHED///
     alert(personInfo);
 }
 // End of displayPerson()
+
+function findPersonFamily(person, people) {
+    let personFamily = `Parents: ${person.parents}\n`;
+    personFamily += `Current Spouse: ${person.currentSpouse}\n`;
+    
+    alert(personFamily);
+}
 
 /**
  * This function's purpose is twofold:
