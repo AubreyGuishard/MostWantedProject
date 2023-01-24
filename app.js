@@ -151,22 +151,19 @@ function displayPerson(person) {
     personInfo += `weight: ${person.weight}\n`;
     personInfo +=  `Eye Color: ${person.eyeColor}\n`;
     personInfo +=  `occupation: ${person.occupation}\n`;
-    personInfo += `parents: ${person.parents}\n`;
-    personInfo += `Current Spouse: ${person.personSpouse}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////FINISHED///
     alert(personInfo);
 }
 // End of displayPerson()
 
-function findPersonSpouse(person, people){
+function findPersonSpouse(poi, people){
 let personSpouse = people.filter(function(person){
-    if (person.charAt(0) === person.id) {
+    if (poi.currentSpouse === person.id) {
         return true
     }
 })
 return personSpouse;
 }
-console.log(findPersonSpouse(people, "firstName"))
 /**
  * This function's purpose is twofold:
  * First, to generate a prompt with the value passed in to the question parameter.
@@ -210,4 +207,11 @@ function findSiblings(parents = [0], people=[defaultPerson]){
     people.filter(function(person){
         //person.parents.includes(${firstName})
     })
+}
+
+function findPersonFamily(poi, people){
+  
+    let personSpouse = findPersonSpouse(poi, people)
+    
+  displayPeople(personSpouse)
 }
