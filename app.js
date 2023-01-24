@@ -203,15 +203,28 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
-function findSiblings(parents = [0], people=[defaultPerson]){
-    people.filter(function(person){
-        //person.parents.includes(${firstName})
-    })
+function findSiblings(poi, people){
+    let personSiblings = people.filter(function(person){
+        let sharedParents = poi.parents.filter(function(parentId){
+            if (person.parents.includes(parentId) )
+                return true
+            })
+            //&& make sure it doesn't post themselves as a sibling in the prompt 
+    if(sharedParents.length>0)  
+        return true
+        //if (poi.parents === parents.id) {
+    //     return true
+    // }
+})
+return personSiblings;
 }
+
 
 function findPersonFamily(poi, people){
   
     let personSpouse = findPersonSpouse(poi, people)
-    
+    let personSiblings = findSiblings(poi, people)
   displayPeople(personSpouse)
+  displayPeople(personSiblings)
 }
+
