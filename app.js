@@ -84,7 +84,7 @@ function mainMenu(person, people) {
             //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
-            alert(personDescendants);
+            displayPeople(personDescendants);
             break;
         case "restart":
             // Restart app() from the very beginning
@@ -210,7 +210,7 @@ function findSiblings(poi, people){
                 return true
             })
             //&& make sure it doesn't post themselves as a sibling in the prompt 
-    if(sharedParents.length>0)  
+    if(sharedParents.length>0&&poi.id!=person.id)  
         return true
         //if (poi.parents === parents.id) {
     //     return true
@@ -221,20 +221,27 @@ return personSiblings;
 
 function findParents(poi, people){
     let personParents = people.filter(function(person){
-            if (poi.parents.includes(person))
+            if (poi.parents.includes(person.id))
                 return true
     })
-        // if (myParents.length>0)
-        // return true
         return personParents
     }
 
+function findPersonDescendants(poi, people){
+    let personDescendants = people.filter(function(person){
+        if (person.parents.includes(poi.id))
+            return true
+    })
+
+    return personDescendants
+}
+
 function findPersonFamily(poi, people){
-   let personParents = findParents(poi, people)
+   //let personParents = findParents(poi, people)
     //let personSpouse = findPersonSpouse(poi, people)
-    //let personSiblings = findSiblings(poi, people)
+    let personSiblings = findSiblings(poi, people)
   //displayPeople(personSpouse)
-  //displayPeople(personSiblings)
-  displayPeople(personParents)
+  displayPeople(personSiblings)
+  //displayPeople(personParents)
 }
 
