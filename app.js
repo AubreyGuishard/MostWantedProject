@@ -221,19 +221,21 @@ return personSiblings;
 
 function findParents(poi, people){
     let personParents = people.filter(function(person){
-        if (poi.parents===person.id){
-            return true
-        }
+        let myParents = poi.parents.filter(function(parentalId){
+            if (person.parents.include(parentalId))
+                return true
+        })
+        if (myParents.length>0)
+        return true
     })
-    return personParents;
+    return personParents
 }
-
 function findPersonFamily(poi, people){
-   //let personParents = findParents(poi, people)
-    let personSpouse = findPersonSpouse(poi, people)
+   let personParents = findParents(poi, people)
+    //let personSpouse = findPersonSpouse(poi, people)
     //let personSiblings = findSiblings(poi, people)
-  displayPeople(personSpouse)
+  //displayPeople(personSpouse)
   //displayPeople(personSiblings)
-  //displayPeople(personParents)
+  displayPeople(personParents)
 }
 
