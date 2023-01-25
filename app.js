@@ -205,8 +205,8 @@ function chars(input) {
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 function findSiblings(poi, people){
     let personSiblings = people.filter(function(person){
-        let sharedParents = poi.parents.filter(function(parentId){
-            if (person.parents.includes(parentId) )
+        let sharedParents = poi.parents.filter(function(parents){
+            if (person.parents.includes(parents) )
                 return true
             })
             //&& make sure it doesn't post themselves as a sibling in the prompt 
@@ -221,15 +221,14 @@ return personSiblings;
 
 function findParents(poi, people){
     let personParents = people.filter(function(person){
-        let myParents = poi.parents.filter(function(parentalId){
-            if (person.parents.include(parentalId))
+            if (poi.parents.includes(person))
                 return true
-        })
-        if (myParents.length>0)
-        return true
     })
-    return personParents
-}
+        // if (myParents.length>0)
+        // return true
+        return personParents
+    }
+
 function findPersonFamily(poi, people){
    let personParents = findParents(poi, people)
     //let personSpouse = findPersonSpouse(poi, people)
