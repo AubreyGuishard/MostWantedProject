@@ -29,7 +29,7 @@ function app(people) {
             searchResults = searchByName(people);
             break;
         case "no":
-            let searchByTraits = promptFor("Please type in search criteria without spaces then value. 'Separate multiple cruiteria by a semicolon (no spaces around semicolon). Can also select 'restart' or 'quit'. (example one criteria - eyecolo brown) (example multiple criteria - eyecolor brown; gender female)",).toLowerCase(); 
+            let searchByTraits = promptFor("Please type in search criteria without spaces then value.\n'Separate multiple cruiteria by a semicolon (no spaces around semicolon).\n Can also select 'restart' or 'quit'.\n (example one criteria - eyecolor brown)\n (example multiple criteria - eyecolor brown; gender female)",).toLowerCase(); 
             searchByTraits = data.filter(function(dataset){
 
             })
@@ -69,19 +69,19 @@ function mainMenu(person, people) {
     // Routes our application based on the user's input
     switch (displayOption) {
         case "info":
-            //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
+            //! TODO #1: Utilize the displayPerson function ////////////FINISHED//////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
             alert(personInfo);
             break;
         case "family":
-            //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
+            //! TODO #2: Declare a findPersonFamily function /////////////////FINISHED/////////////////////////
             // HINT: Look for a people-collection stringifier utility function to help
             let personFamily = findPersonFamily(person[0], people);
             alert(personFamily);
             break;
         case "descendants":
-            //! TODO #3: Declare a findPersonDescendants function //////////////////////////////////////////
+            //! TODO #3: Declare a findPersonDescendants function ////////////FINISHED//////////////////////////////
             // HINT: Review recursion lecture + demo for bonus user story
             let personDescendants = findPersonDescendants(person[0], people);
             displayPeople(personDescendants);
@@ -237,11 +237,14 @@ function findPersonDescendants(poi, people){
 }
 
 function findPersonFamily(poi, people){
-   //let personParents = findParents(poi, people)
-    //let personSpouse = findPersonSpouse(poi, people)
+    let personParents = findParents(poi, people)
+    let personSpouse = findPersonSpouse(poi, people)
     let personSiblings = findSiblings(poi, people)
-  //displayPeople(personSpouse)
+  displayPeople(personSpouse)
   displayPeople(personSiblings)
-  //displayPeople(personParents)
+  displayPeople(personParents)
 }
 
+function searchByTraits(poi, people){
+    
+}
