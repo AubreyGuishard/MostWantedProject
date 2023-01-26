@@ -245,6 +245,7 @@ function findPersonFamily(poi, people){
   displayPeople(personParents)
 }
 
-function searchByTraits(poi, people){
-    
-}
+function searchByTraits(person){
+    let personEyeColor = `eyecolor: ${person.eyeColor}`
+    alert(personEyeColor)
+    }
