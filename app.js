@@ -29,12 +29,9 @@ function app(people) {
             searchResults = searchByName(people);
             break;
         case "no":
-            let searchByTraits = promptFor("Please type in search criteria without spaces then value.\n'Separate multiple cruiteria by a semicolon (no spaces around semicolon).\n Can also select 'restart' or 'quit'.\n (example one criteria - eyecolor brown)\n (example multiple criteria - eyecolor brown; gender female)",).toLowerCase(); 
-            searchByTraits = data.filter(function(dataset){
-
-            })
+            
             //! TODO #4: Declare a searchByTraits (multiple traits) function //////////////////////////////////////////
-                //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
+            //! TODO #4a: Provide option to search for single or multiple //////////////////////////////////////////
             searchResults = searchByTraits(people);
             console.log(searchResults)
             break;
@@ -245,7 +242,34 @@ function findPersonFamily(poi, people){
   displayPeople(personParents)
 }
 
-function searchByTraits(person){
-    let personEyeColor = `eyecolor: ${person.eyeColor}`
-    alert(personEyeColor)
+// function searchByTraits(people = []){
+//     let response = prompt("Please type in search criteria without spaces then value.\n'Separate multiple cruiteria by a semicolon (no spaces around semicolon).\n Can also select 'restart' or 'quit'.\n (example one criteria - eyecolor brown)\n (example multiple criteria - eyecolor brown; gender female)",); 
+
+//     let criteria = response.split('; ').map(criterion => criterion.split(' '));
+    
+//     let matchedPeople = people.filter(person => {
+//         let matches = criteria.filter(criterion => {
+//             let trait = criterion[0]
+//             let searchValue = criterion[1]
+//             if (person[trait] === searchValue) return true;
+//         });
+
+//         if (matches.length === criteria.length) return true;
+//     });
+//     displayPeople(matchedPeople);
+// }
+
+function searchByTraits(people=[{}]) {
+    let response = 'yes';
+    while (response === 'yes') {
+        let trait = prompt('Select a trait: \n(gender, dob, height, weight, eyeColor, occupation)');
+        let searchValue = prompt(`Enter a value for ${trait}`);
+  
+        people = people.filter(person => {
+            if(person[trait] === searchValue) return true;
+        });
+
+        response = promptFor('Would you like to search by another trait?', yesNo);
     }
+    displayPeople(people);
+}
