@@ -262,7 +262,7 @@ function findPersonFamily(poi, people){
 function searchByTraits(people=[{}]) {
     let response = 'yes';
     while (response === 'yes') {
-        let trait = prompt('Select a trait: \n(gender, dob, height, weight, eyeColor, occupation)');
+        let trait = prompt("Please type in search criteria without spaces then value.\n'Separate multiple cruiteria by a semicolon (no spaces around semicolon).\n Can also select 'restart' or 'quit'.\n (example one criteria - eyeColor brown)\n (example multiple criteria - eyecolor brown; gender female)");
         let searchValue = prompt(`Enter a value for ${trait}`);
   
         people = people.filter(person => {
